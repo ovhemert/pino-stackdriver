@@ -3,8 +3,9 @@
   "version": "1.0.0-alpha",
   "description": "A transport for pino that sends messages to Stackdriver Logging",
   "homepage": "https://github.com/ovhemert/pino-stackdriver",
-  "main": "index.js",
+  "main": "src/pino-stackdriver.js",
   "scripts": {
+    "dev:cli": "node ./test/debug.js | node ./src/cli.js",
     "lint": "standard",
     "test": "standard && tap test/*.test.js --coverage --100",
     "test:appveyor": "standard",
@@ -12,7 +13,7 @@
     "posttest": "tap --coverage --coverage-report=lcovonly"
   },
   "bin": {
-    "pino-stackdriver": "./index.js"
+    "pino-stackdriver": "src/cli.js"
   },
   "keywords": [
     "pino",
@@ -34,9 +35,18 @@
     "test"
   ],
   "devDependencies": {
-    "pino": "^5.8.0",
+    "event-stream": "^4.0.1",
+    "pino-multi-stream": "^4.0.0",
+    "sinon": "^7.0.0",
     "standard": "^12.0.0",
     "tap": "^12.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@google-cloud/logging": "^4.0.1",
+    "commander": "^2.19.0",
+    "fast-json-parse": "^1.0.3",
+    "pumpify": "^1.5.1",
+    "split2": "^3.0.0",
+    "through2": "^2.0.3"
+  }
 }
