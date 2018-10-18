@@ -5,7 +5,6 @@ const sinon = require('sinon')
 const pkg = require('../package.json')
 
 let { Logging } = require('@google-cloud/logging')
-let stackdriver = require('../src/index')
 
 module.exports.credentials = '/credentials.json'
 module.exports.projectId = 'test-project'
