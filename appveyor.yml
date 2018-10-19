@@ -8,5 +8,5 @@ install:
 test_script:
   - node --version
   - npm --version
-  - npm run test
+  - npm run test:appveyor
 build: off
