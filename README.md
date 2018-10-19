@@ -12,6 +12,8 @@
 
 This module provides a "transport" for [pino][pino] that forwards messages to the [Google Stackdriver][stackdriver] log service through it's API.
 
+![Screenshot](docs/images/stackdriver-screenshot.png)
+
 You should install `pino-stackdriver` globally for ease of use:
 
 ```bash
