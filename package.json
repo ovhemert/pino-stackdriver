@@ -1,14 +1,13 @@
 {
   "name": "pino-stackdriver",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "A transport for pino that sends messages to Google Stackdriver Logging",
   "homepage": "https://github.com/ovhemert/pino-stackdriver",
-  "main": "src/pino-stackdriver.js",
+  "main": "src/index.js",
   "scripts": {
     "dev:cli": "node ./test/debug.js | node ./src/cli.js",
     "lint": "standard",
     "test": "standard && tap test/*.test.js --coverage --100",
-    "test:appveyor": "standard",
     "test:report": "standard && tap test/*.test.js --coverage  --coverage-report=html --100",
     "posttest": "tap --coverage --coverage-report=lcovonly"
   },
