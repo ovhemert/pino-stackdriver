@@ -18,24 +18,35 @@ You should install `pino-stackdriver` globally for ease of use:
 $ npm install --production -g pino-stackdriver
 ```
 
-## Usage
+## Requirements
 
-Given an application `foo` that logs via [pino][pino], a stackdriver log project `bar` and credentials in the file `/credentials.json`, you would use `pino-stackdriver` like so:
+This package internally uses the Google cloud logging library to call the Stackdriver Logging API. To be able to log to Stackdriver, some setup is needed on the Google Cloud platform.
+
+Create a service account on the page [Stackdriver Logging Client Libraries](https://cloud.google.com/logging/docs/reference/libraries). This downloads a JSON file with the credentials required.
+
+## Installation
+
+To use globally from command line:
 
 ```bash
-$ node foo | pino-stackdriver --project bar --credentials /credentials.json
+$ npm install -g pino-stackdriver
 ```
 
-## Options
+To include as a library in your project:
 
-You can pass the following options via cli arguments:
+```bash
+$ npm install pino-stackdriver
+```
 
-| Short command | Full command | Description |
-| ------------- | ------------ |-------------|
-| -V | --version | Output the version number |
-| -p | --project &lt;project&gt; | Your Google Cloud Platform project ID (or use env var PROJECT_ID) |
-| -c | --credentials &lt;credentials&gt; | The file path of the JSON file that contains your service account key (or use env var GOOGLE_APPLICATION_CREDENTIALS) |
-| -h | --help | Output usage information |
+## CLI
+
+Want to use `pino-stackdriver` from the CLI?
+See the [CLI](./docs/CLI.md) documentation for details.
+
+## API
+
+Want to use `pino-stackdriver` as a library in your project?
+See the [API](./docs/API.md) documentation for details.
 
 ## Maintainers
 
@@ -48,7 +59,7 @@ You can pass the following options via cli arguments:
 
 ## Contributing
 
-See the [CONTRIBUTING.md](./docs/CONTRIBUTING.md) file for details.
+See the [CONTRIBUTING](./docs/CONTRIBUTING.md) file for details.
 
 ## Donations
 

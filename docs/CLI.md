@@ -1,0 +1,28 @@
+# CLI
+
+To use `pino-stackdriver` from the command line, you need to install it globally:
+
+```bash
+$ npm install -g pino-stackdriver
+```
+
+## Example
+
+Given an application `foo` that logs via pino, a stackdriver log project `bar` and credentials in the file `/credentials.json`, you would use `pino-stackdriver` like so:
+
+```bash
+$ node foo | pino-stackdriver --project bar --credentials /credentials.json
+```
+
+## Usage
+
+You can pass the following options via cli arguments:
+
+| Short command | Full command | Description |
+| ------------- | ------------ |-------------|
+| -V | --version | Output the version number |
+| -p | --project &lt;project&gt; | Your Google Cloud Platform project ID (or use env var PROJECT_ID) |
+| -c | --credentials &lt;credentials&gt; | The file path of the JSON file that contains your service account key (or use env var GOOGLE_APPLICATION_CREDENTIALS) |
+| -h | --help | Output usage information |
+
+See the [API](./API.md) documentation for details.
