@@ -48,6 +48,6 @@
     "fast-json-parse": "^1.0.3",
     "pumpify": "^1.5.1",
     "split2": "^3.0.0",
-    "through2": "^2.0.3"
+    "through2": "^3.0.0"
   }
 }
