@@ -5,7 +5,7 @@ node_js:
 - '10'
 os:
 - linux
-- windows
+- osx
 install: npm install
 deploy:
   provider: npm
