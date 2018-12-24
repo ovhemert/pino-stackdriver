@@ -37,17 +37,17 @@
   ],
   "devDependencies": {
     "event-stream": "3.3.4",
-    "pino-multi-stream": "^4.0.0",
-    "sinon": "^7.1.1",
+    "pino-multi-stream": "^4.0.1",
+    "sinon": "^7.2.2",
     "standard": "^12.0.0",
-    "tap": "^12.0.1"
+    "tap": "^12.1.1"
   },
   "dependencies": {
-    "@google-cloud/logging": "^4.1.0",
+    "@google-cloud/logging": "^4.1.1",
     "commander": "^2.19.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^1.5.1",
-    "split2": "^3.0.0",
+    "split2": "^3.1.0",
     "through2": "^3.0.0"
   }
 }
