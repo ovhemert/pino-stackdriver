@@ -35,14 +35,17 @@ module.exports.toLogEntry = function (log, options = {}) {
   message = (log.level >= PINO_LEVELS.error && log.stack) ? `${message}\n${log.stack}` : message
   message = (prefix) ? `[${prefix}] ${message}` : message
 
+  let data = { ...log, message }
+  if (data.msg) { delete data.msg }
+  if (data.labels) { delete data.labels }
+  if (data.httpRequest) { delete data.httpRequest }
+
   let entry = {
     meta: {
       resource: { type: 'global' },
       severity
     },
-    data: {
-      message
-    }
+    data
   }
   if (log.httpRequest) { entry.meta.httpRequest = log.httpRequest }
   if (labels || log.labels) {
