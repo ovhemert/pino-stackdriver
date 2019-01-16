@@ -1,5 +1,6 @@
 # pino-stackdriver
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d259e1e01a09432398c75c2127aeeaab)](https://app.codacy.com/app/ovhemert/pino-stackdriver?utm_source=github.com&utm_medium=referral&utm_content=ovhemert/pino-stackdriver&utm_campaign=Badge_Grade_Dashboard)
 [![Travis](https://img.shields.io/travis/com/ovhemert/pino-stackdriver.svg?branch=master&logo=travis)](https://travis-ci.com/ovhemert/pino-stackdriver)
 [![AppVeyor](https://img.shields.io/appveyor/ci/ovhemert/pino-stackdriver.svg?logo=appveyor)](https://ci.appveyor.com/project/ovhemert/pino-stackdriver)
 [![Dependencies](https://img.shields.io/david/ovhemert/pino-stackdriver.svg)](https://david-dm.org/ovhemert/pino-stackdriver)
