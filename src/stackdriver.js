@@ -28,7 +28,7 @@ module.exports.parseJsonStream = function () {
 }
 
 module.exports.toLogEntry = function (log, options = {}) {
-  const { labels, prefix } = options
+  const { labels, prefix, resource } = options
 
   const severity = _levelToSeverity(log.level)
   let message = log.msg || severity
@@ -42,7 +42,7 @@ module.exports.toLogEntry = function (log, options = {}) {
 
   let entry = {
     meta: {
-      resource: { type: 'global' },
+      resource: resource || { type: 'global' },
       severity
     },
     data

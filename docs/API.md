@@ -35,9 +35,9 @@ const writeStream = stackdriver.createWriteStream({
 
 #### credentials
 
-Type: `String` *(required)*
+Type: `String` *(optional)*
 
-Full path to the JSON file containing the Google Service Credentials.
+Full path to the JSON file containing the Google Service Credentials. Defaults to the GOOGLE_APPLICATION_CREDENTIALS environment variable. At least one has to be available.
 
 #### projectId
 
@@ -45,3 +45,14 @@ Type: `String` *(required)*
 
 The name of the project.
 
+#### logName
+
+Type: `String` *(optional)*
+
+The name of the log. Defaults to `"pino_log"`.
+
+#### resource
+
+Type: `{ type: String, labels: Object }` *(optional)*
+
+The resource to send logs to. Defaults to `{ type: "global" }`.

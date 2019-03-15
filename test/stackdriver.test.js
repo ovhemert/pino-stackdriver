@@ -97,7 +97,7 @@ test('adds httpRequest to log entry message', t => {
 })
 
 test('transforms log to entry in stream', t => {
-  t.plan(2)
+  t.plan(3)
 
   const parseJsonStream = tested.parseJsonStream()
   const toLogEntryStream = tested.toLogEntryStream()
@@ -105,6 +105,25 @@ test('transforms log to entry in stream', t => {
     if (err) { t.fail(err.message) }
     t.ok(result.length === 1)
     t.ok(result[0].meta.severity === 'info')
+    t.deepEquals(result[0].meta.resource, { type: 'global' })
+  })
+  const entry = { 'level': 30, 'time': 1532081790743, 'msg': 'info message', 'pid': 9118, 'hostname': 'Osmonds-MacBook-Pro.local', 'v': 1 }
+  const input = `${JSON.stringify(entry)}\n`
+  const readStream = helpers.readStreamTest([input])
+  readStream.pipe(writeStream)
+})
+
+test('transforms log to entry with custom resource in stream', t => {
+  t.plan(3)
+
+  const resource = { type: 'test', labels: { test: 'test' } }
+  const parseJsonStream = tested.parseJsonStream()
+  const toLogEntryStream = tested.toLogEntryStream({ resource })
+  const writeStream = helpers.transformStreamTest([parseJsonStream, toLogEntryStream], (err, result) => {
+    if (err) { t.fail(err.message) }
+    t.ok(result.length === 1)
+    t.ok(result[0].meta.severity === 'info')
+    t.deepEquals(result[0].meta.resource, { type: 'test', labels: { test: 'test' } })
   })
   const entry = { 'level': 30, 'time': 1532081790743, 'msg': 'info message', 'pid': 9118, 'hostname': 'Osmonds-MacBook-Pro.local', 'v': 1 }
   const input = `${JSON.stringify(entry)}\n`
