@@ -4,6 +4,7 @@
   "description": "A transport for pino that sends messages to Google Stackdriver Logging",
   "homepage": "https://github.com/ovhemert/pino-stackdriver",
   "main": "src/index.js",
+  "types": "pino-stackdriver.d.ts",
   "scripts": {
     "dev:cli": "node ./test/debug.js | node ./src/cli.js",
     "lint": "standard",
