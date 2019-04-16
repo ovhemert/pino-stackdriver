@@ -3,7 +3,7 @@ declare namespace PinoStackdriver {
   export interface Options {
     /**
      * Full path to the JSON file containing the Google Service Credentials.
-     * Required if GOOGLE_APPLICATION_CREDENTIALS is not set as an environment variable.
+     * Defaults to GOOGLE_APPLICATION_CREDENTIALS environment variable.
      */
     credentials?: string;
 
