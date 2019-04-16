@@ -146,16 +146,16 @@ test('logs to stackdriver', t => {
   readStream.pipe(writeStream)
 })
 
-test('throws on missing credentials', t => {
+test('works without passing credentials', t => {
   t.plan(1)
 
   const { projectId } = helpers
   try {
     delete process.env.GOOGLE_APPLICATION_CREDENTIALS
     tested.toStackdriverStream({ projectId })
-    t.fail('Should throw on missing credentials')
-  } catch (err) {
     t.ok(true)
+  } catch (err) {
+    t.fail('Should not have thrown')
   }
 })
 
