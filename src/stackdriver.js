@@ -67,7 +67,9 @@ module.exports.toLogEntryStream = function (options = {}) {
 
 module.exports.toStackdriverStream = function (options = {}) {
   const { logName, projectId, credentials } = options
-  process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || credentials
+  if (process.env.GOOGLE_APPLICATION_CREDENTIALS || credentials) {
+    process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || credentials
+  }
   if (!projectId) { throw Error('The "projectId" argument is missing') }
   const opt = {
     logName: logName || 'pino_log',
