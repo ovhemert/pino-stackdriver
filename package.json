@@ -44,7 +44,7 @@
     "tap": "^13.1.2"
   },
   "dependencies": {
-    "@google-cloud/logging": "^4.5.2",
+    "@google-cloud/logging": "^5.0.0",
     "@types/node": "*",
     "commander": "^2.20.0",
     "fast-json-parse": "^1.0.3",
