@@ -37,6 +37,7 @@
     "test"
   ],
   "devDependencies": {
+    "@types/node": "^12.0.2",
     "event-stream": "^4.0.1",
     "pino-multi-stream": "^4.0.2",
     "sinon": "^7.3.2",
@@ -45,7 +46,6 @@
   },
   "dependencies": {
     "@google-cloud/logging": "^5.0.0",
-    "@types/node": "^12.0.2",
     "commander": "^2.20.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^1.5.1",
