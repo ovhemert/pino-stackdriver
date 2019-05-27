@@ -42,10 +42,10 @@
     "pino-multi-stream": "^4.0.2",
     "sinon": "^7.3.2",
     "standard": "^12.0.0",
-    "tap": "^14.0.0"
+    "tap": "^14.1.11"
   },
   "dependencies": {
-    "@google-cloud/logging": "^5.0.0",
+    "@google-cloud/logging": "^5.0.1",
     "commander": "^2.20.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^1.5.1",
