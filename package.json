@@ -23,7 +23,7 @@
     "logging",
     "stackdriver"
   ],
-  "author": "Osmond van Hemert <osmond@vanhemert.nu>",
+  "author": "Osmond van Hemert <hello@ovhemert.dev> (https://ovhemert.dev)",
   "license": "MIT",
   "repository": {
     "type": "git",
