@@ -48,7 +48,7 @@
     "@google-cloud/logging": "^5.0.1",
     "commander": "^2.20.0",
     "fast-json-parse": "^1.0.3",
-    "pumpify": "^1.5.1",
+    "pumpify": "^2.0.0",
     "split2": "^3.1.1",
     "through2": "^3.0.1"
   }
