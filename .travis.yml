@@ -2,13 +2,9 @@ language: node_js
 node_js:
   - '8'
   - '10'
+  - '12'
 os:
   - linux
   - osx
+  - windows
 install: npm install
-deploy:
-  provider: npm
-  email: $NPM_EMAIL
-  api_key: $NPM_TOKEN
-  on:
-    tags: true
