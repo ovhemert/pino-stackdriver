@@ -8,7 +8,7 @@
   "scripts": {
     "dev:cli": "node ./test/debug.js | node ./src/cli.js",
     "lint": "standard",
-    "test": "standard && tap test/*.test.js --coverage --90",
+    "test": "standard && tap test/*.test.js --coverage",
     "test:report": "standard && tap test/*.test.js --coverage  --coverage-report=html --100"
   },
   "bin": {
