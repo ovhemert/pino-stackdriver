@@ -7,4 +7,3 @@ os:
   - linux
   - osx
   - windows
-install: npm install
