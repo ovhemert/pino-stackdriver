@@ -4,7 +4,7 @@ const pumpify = require('pumpify')
 const sinon = require('sinon')
 const pkg = require('../package.json')
 
-let { Logging } = require('@google-cloud/logging')
+const { Logging } = require('@google-cloud/logging')
 
 module.exports.credentials = '/credentials.json'
 module.exports.projectId = 'test-project'
@@ -31,7 +31,7 @@ module.exports.readStreamTest = (items) => {
 
 module.exports.transformStreamTest = (transformStream, callback) => {
   const writableStream = es.writeArray(callback)
-  let streams = (Array.isArray(transformStream)) ? transformStream : [transformStream]
+  const streams = (Array.isArray(transformStream)) ? transformStream : [transformStream]
   streams.push(writableStream)
   return pumpify(streams)
 }
