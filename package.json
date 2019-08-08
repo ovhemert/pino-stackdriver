@@ -35,15 +35,15 @@
     "test"
   ],
   "devDependencies": {
-    "@types/node": "^12.6.9",
+    "@types/node": "^12.7.1",
     "event-stream": "^4.0.1",
     "pino-multi-stream": "^4.1.0",
-    "sinon": "^7.4.0",
+    "sinon": "^7.4.1",
     "standard": "^13.1.0",
     "tap": "^14.6.1"
   },
   "dependencies": {
-    "@google-cloud/logging": "^5.2.0",
+    "@google-cloud/logging": "^5.2.1",
     "commander": "^2.20.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^2.0.0",
