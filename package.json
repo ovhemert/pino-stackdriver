@@ -35,16 +35,16 @@
     "test"
   ],
   "devDependencies": {
-    "@types/node": "^12.7.2",
+    "@types/node": "^12.7.5",
     "event-stream": "^4.0.1",
-    "pino-multi-stream": "^4.1.0",
-    "sinon": "^7.4.1",
-    "standard": "^14.0.0",
-    "tap": "^14.6.1"
+    "pino-multi-stream": "^4.2.0",
+    "sinon": "^7.4.2",
+    "standard": "^14.2.0",
+    "tap": "^14.6.2"
   },
   "dependencies": {
     "@google-cloud/logging": "^5.2.2",
-    "commander": "^3.0.0",
+    "commander": "^3.0.1",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^2.0.0",
     "split2": "^3.1.1",
