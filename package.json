@@ -9,9 +9,7 @@
     "dev:cli": "node ./test/debug.js | node ./src/cli.js",
     "lint": "standard",
     "test": "standard && tap test/*.test.js --coverage",
-    "test:report": "standard && tap test/*.test.js --coverage  --coverage-report=html --100",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "test:report": "standard && tap test/*.test.js --coverage  --coverage-report=html --100"
   },
   "bin": {
     "pino-stackdriver": "src/cli.js"
@@ -49,9 +47,7 @@
     "commander": "^4.0.1",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^2.0.1",
-    "snyk": "^1.249.1",
     "split2": "^3.1.1",
     "through2": "^3.0.1"
-  },
-  "snyk": true
+  }
 }
