@@ -35,12 +35,12 @@ test('transforms default log entry levels', t => {
   t.plan(6)
 
   const logs = [
-    { level: 10, time: 1532081790710, msg: 'trace message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
-    { level: 20, time: 1532081790720, msg: 'debug message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
-    { level: 30, time: 1532081790730, msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
-    { level: 40, time: 1532081790740, msg: 'warning message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
-    { level: 50, time: 1532081790750, msg: 'error message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', type: 'Error', stack: 'Error: error message', v: 1 },
-    { level: 60, time: 1532081790760, msg: 'fatal message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+    { level: 10, time: parseInt('1532081790710', 10), msg: 'trace message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
+    { level: 20, time: parseInt('1532081790720', 10), msg: 'debug message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
+    { level: 30, time: parseInt('1532081790730', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
+    { level: 40, time: parseInt('1532081790740', 10), msg: 'warning message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 },
+    { level: 50, time: parseInt('1532081790750', 10), msg: 'error message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', type: 'Error', stack: 'Error: error message', v: 1 },
+    { level: 60, time: parseInt('1532081790760', 10), msg: 'fatal message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   ]
   const entries = logs.map(log => {
     return tested.toLogEntry(log)
@@ -56,7 +56,7 @@ test('transforms default log entry levels', t => {
 test('transforms custom log entry level', t => {
   t.plan(1)
 
-  const log = { level: 35, time: 1532081790735, msg: 'custom level message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const log = { level: 35, time: parseInt('1532081790735', 10), msg: 'custom level message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const entry = tested.toLogEntry(log)
   t.ok(entry.meta.severity === 'default')
 })
@@ -64,7 +64,7 @@ test('transforms custom log entry level', t => {
 test('prefixes log entry message', t => {
   t.plan(1)
 
-  const log = { level: 30, time: 1532081790730, msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const log = { level: 30, time: parseInt('1532081790730', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const entry = tested.toLogEntry(log, { prefix: 'INFO' })
   t.ok(entry.data.message.startsWith('[INFO] '))
 })
@@ -72,17 +72,17 @@ test('prefixes log entry message', t => {
 test('adds labels to log entry message', t => {
   t.plan(5)
 
-  let log = { level: 30, time: 1532081790730, labels: { foo: 'bar' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  let log = { level: 30, time: parseInt('1532081790730', 10), labels: { foo: 'bar' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   let entry = tested.toLogEntry(log, { labels: { a: 'b' } })
   t.ok(entry.meta.severity === 'info')
   t.ok(entry.meta.labels.a === 'b')
   t.ok(entry.meta.labels.foo === 'bar')
 
-  log = { level: 30, time: 1532081790730, msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  log = { level: 30, time: parseInt('1532081790730', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   entry = tested.toLogEntry(log, { labels: { a: 'b' } })
   t.ok(entry.meta.severity === 'info')
 
-  log = { level: 30, time: 1532081790730, labels: { foo: 'bar' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  log = { level: 30, time: parseInt('1532081790730', 10), labels: { foo: 'bar' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   entry = tested.toLogEntry(log)
   t.ok(entry.meta.severity === 'info')
 })
@@ -90,7 +90,7 @@ test('adds labels to log entry message', t => {
 test('adds httpRequest to log entry message', t => {
   t.plan(2)
 
-  const log = { level: 30, time: 1532081790730, httpRequest: { url: 'http://localhost/' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const log = { level: 30, time: parseInt('1532081790730', 10), httpRequest: { url: 'http://localhost/' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const entry = tested.toLogEntry(log)
   t.ok(entry.meta.severity === 'info')
   t.ok(entry.meta.httpRequest.url === 'http://localhost/')
@@ -107,7 +107,7 @@ test('transforms log to entry in stream', t => {
     t.ok(result[0].meta.severity === 'info')
     t.deepEquals(result[0].meta.resource, { type: 'global' })
   })
-  const entry = { level: 30, time: 1532081790743, msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = { level: 30, time: parseInt('1532081790743', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const input = `${JSON.stringify(entry)}\n`
   const readStream = helpers.readStreamTest([input])
   readStream.pipe(writeStream)
@@ -125,7 +125,7 @@ test('transforms log to entry with custom resource in stream', t => {
     t.ok(result[0].meta.severity === 'info')
     t.deepEquals(result[0].meta.resource, { type: 'test', labels: { test: 'test' } })
   })
-  const entry = { level: 30, time: 1532081790743, msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = { level: 30, time: parseInt('1532081790743', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const input = `${JSON.stringify(entry)}\n`
   const readStream = helpers.readStreamTest([input])
   readStream.pipe(writeStream)
