@@ -13,7 +13,7 @@ Changes are grouped by:
 `Fixed` for any bug fixes
 `Security` in case of vulnerabilities
 
-## [Unreleased](https://github.com/owner/repository/compare/v1.2.10...HEAD)
+## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v1.2.10...HEAD)
 
 ### Added
 
