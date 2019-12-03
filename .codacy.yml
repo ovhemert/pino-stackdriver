@@ -1,4 +1,5 @@
 ---
 exclude_paths:
+  - '**/*.ts'
   - '.github/**'
   - 'docs/**'
