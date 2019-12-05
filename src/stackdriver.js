@@ -31,7 +31,7 @@ module.exports.toLogEntry = function (log, options = {}) {
   const { labels, prefix, resource } = options
 
   const severity = _levelToSeverity(log.level)
-  let message = log.msg || severity
+  let message = log.msg || log.message || severity
   message = (log.level >= PINO_LEVELS.error && log.stack) ? `${message}\n${log.stack}` : message
   message = (prefix) ? `[${prefix}] ${message}` : message
 
