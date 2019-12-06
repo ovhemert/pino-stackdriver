@@ -181,3 +181,11 @@ test('throws on missing options', t => {
     t.ok(true)
   }
 })
+
+test('transforms log entry message field', t => {
+  t.plan(1)
+
+  const log = { level: 35, time: parseInt('1532081790735', 10), message: 'Message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log)
+  t.ok(entry.data.message === 'Message')
+})
