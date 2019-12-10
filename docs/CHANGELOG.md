@@ -13,11 +13,20 @@ Changes are grouped by:
 `Fixed` for any bug fixes
 `Security` in case of vulnerabilities
 
-## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v1.2.10...HEAD)
+## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v1.3.0...HEAD)
+
+- ...
+
+## [1.3.0](https://github.com/ovhemert/pino-stackdriver/compare/v1.2.10...v1.3.0) - 2019-12-10
 
 ### Added
 
 - Changelog by [@ovhemert](https://github.com/ovhemert)
+- Prefer `message` field if `msg` is absent for better Bunyan compatibility by [p-fedyukovich](https://github.com/p-fedyukovich)
+
+### Changed
+
+- CLI credentials now optional to support GCE service account with permissions by [@ovhemert](https://github.com/ovhemert)
 
 ### Removed
 
