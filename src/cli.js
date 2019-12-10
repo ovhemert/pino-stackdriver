@@ -13,7 +13,6 @@ function main () {
     .option('-p, --project <project>', 'Your Google Cloud Platform project ID')
     .action(({ credentials, project }) => {
       try {
-        if (!process.env.GOOGLE_APPLICATION_CREDENTIALS && !credentials) { throw Error('Credentials are missing.') }
         const _credentials = credentials || process.env.GOOGLE_APPLICATION_CREDENTIALS
         if (!process.env.PROJECT_ID && !project) { throw Error('Project is missing.') }
         const _project = project || process.env.PROJECT_ID

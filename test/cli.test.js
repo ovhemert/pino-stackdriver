@@ -25,14 +25,15 @@ test('displays version info', (t) => {
   })
 })
 
-test('throws on missing credentials', (t) => {
+test('works without passing credentials', t => {
   t.plan(1)
   delete process.env.GOOGLE_APPLICATION_CREDENTIALS
   const app = spawn('node', [appPath, '-p', 'project-id'])
   app.stdout.on('data', (data) => {
     const msg = data.toString()
-    const res = (msg.indexOf('Credentials are missing') >= 0)
+    const res = (msg.indexOf('logging') >= 0)
     t.ok(res)
+    app.kill()
   })
 })
 
