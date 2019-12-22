@@ -38,7 +38,7 @@
     "@types/node": "^12.12.14",
     "event-stream": "^4.0.1",
     "pino-multi-stream": "^4.2.0",
-    "sinon": "^7.5.0",
+    "sinon": "^8.0.0",
     "standard": "^14.3.1",
     "tap": "^14.10.2"
   },
