@@ -35,7 +35,7 @@
     "test"
   ],
   "devDependencies": {
-    "@types/node": "^12.12.14",
+    "@types/node": "^13.1.0",
     "event-stream": "^4.0.1",
     "pino-multi-stream": "^4.2.0",
     "sinon": "^7.5.0",
