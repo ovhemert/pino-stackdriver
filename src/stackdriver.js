@@ -23,12 +23,27 @@ function _levelToSeverity (level) {
   return 'default'
 }
 
+const defaultKeys = {
+  httpRequest: 'httpRequest',
+  trace: 'trace'
+}
+
+function _getKey (log, data, k, keys) {
+  const key = keys && keys[k] ? keys[k] : defaultKeys[k]
+  const v = log[key]
+  if (v) {
+    delete data[key]
+    return v
+  }
+  return undefined
+}
+
 module.exports.parseJsonStream = function () {
   return split2(_jsonParser)
 }
 
 module.exports.toLogEntry = function (log, options = {}) {
-  const { labels, prefix, resource } = options
+  const { labels, prefix, resource, keys } = options
 
   const severity = _levelToSeverity(log.level)
   let message = log.msg || log.message || severity
@@ -38,16 +53,16 @@ module.exports.toLogEntry = function (log, options = {}) {
   const data = { ...log, message }
   if (data.msg) { delete data.msg }
   if (data.labels) { delete data.labels }
-  if (data.httpRequest) { delete data.httpRequest }
 
   const entry = {
     meta: {
       resource: resource || { type: 'global' },
-      severity
+      severity,
+      trace: _getKey(log, data, 'trace', keys),
+      httpRequest: _getKey(log, data, 'httpRequest', keys)
     },
     data
   }
-  if (log.httpRequest) { entry.meta.httpRequest = log.httpRequest }
   if (labels || log.labels) {
     const optLabels = labels || {}
     const logLabels = log.labels || {}

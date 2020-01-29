@@ -96,6 +96,24 @@ test('adds httpRequest to log entry message', t => {
   t.ok(entry.meta.httpRequest.url === 'http://localhost/')
 })
 
+test('adds httpRequest with custom key to log entry message', t => {
+  t.plan(2)
+
+  const log = { level: 30, time: parseInt('1532081790730', 10), req: { url: 'http://localhost/' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log, { keys: { httpRequest: 'req' } })
+  t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.httpRequest.url === 'http://localhost/')
+})
+
+test('adds trace to log entry message', t => {
+  t.plan(2)
+
+  const log = { level: 30, time: parseInt('1532081790730', 10), trace: 'my/trace/id', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log)
+  t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.trace === 'my/trace/id')
+})
+
 test('transforms log to entry in stream', t => {
   t.plan(3)
 
