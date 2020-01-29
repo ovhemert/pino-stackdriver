@@ -29,7 +29,7 @@ const defaultKeys = {
 }
 
 function _getKey (log, data, k, keys) {
-  const key = keys && keys[k] ? keys[k] : defaultKeys[k]
+  const key = (keys && keys[k]) ? keys[k] : defaultKeys[k]
   const v = log[key]
   if (v) {
     delete data[key]
