@@ -13,9 +13,19 @@ Changes are grouped by:
 `Fixed` for any bug fixes
 `Security` in case of vulnerabilities
 
-## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v1.3.0...HEAD)
+## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v2.0.0...HEAD)
 
 - ...
+
+## [2.0.0](https://github.com/ovhemert/pino-stackdriver/compare/v1.3.0...v2.0.0)
+
+### Added
+
+- Testing on Node v13.x by [@ovhemert](https://github.com/ovhemert)
+
+### Removed
+
+- Node v8.x support by [@ovhemert](https://github.com/ovhemert)
 
 ## [1.3.0](https://github.com/ovhemert/pino-stackdriver/compare/v1.2.10...v1.3.0) - 2019-12-10
 
