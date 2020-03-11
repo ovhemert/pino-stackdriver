@@ -4,7 +4,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d259e1e01a09432398c75c2127aeeaab)](https://app.codacy.com/app/ovhemert/pino-stackdriver?utm_source=github.com&utm_medium=referral&utm_content=ovhemert/pino-stackdriver&utm_campaign=Badge_Grade_Dashboard)
 [![Known Vulnerabilities](https://snyk.io/test/npm/pino-stackdriver/badge.svg)](https://snyk.io/test/npm/pino-stackdriver)
 [![Coverage Status](https://coveralls.io/repos/github/ovhemert/pino-stackdriver/badge.svg?branch=master)](https://coveralls.io/github/ovhemert/pino-stackdriver?branch=master)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ovhemert/pino-stackdriver.svg)](https://greenkeeper.io/)
+
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 
 This module provides a "transport" for [pino][pino] that forwards messages to the [Google Stackdriver][stackdriver] log service through it's API.
