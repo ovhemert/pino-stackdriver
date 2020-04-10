@@ -25,11 +25,15 @@ function _levelToSeverity (level) {
 
 const defaultKeys = {
   httpRequest: 'httpRequest',
-  trace: 'trace'
+  trace: undefined
 }
 
 function _getKey (log, data, k, keys) {
+  // use custom key, otherwise use default keys
   const key = (keys && keys[k]) ? keys[k] : defaultKeys[k]
+  // if no key is specified, return nothing
+  if (!key) return undefined
+  // if a value is defined, remove it from the log message to avoid double-loggin
   const v = log[key]
   if (v) {
     delete data[key]
