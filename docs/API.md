@@ -31,7 +31,7 @@ const writeStream = stackdriver.createWriteStream({
   credentials: '/credentials.json',
   projectId: 'my-project'
 })
-````
+```
 
 #### credentials
 
@@ -56,3 +56,10 @@ The name of the log. Defaults to `"pino_log"`.
 Type: `{ type: String, labels: Object }` *(optional)*
 
 The resource to send logs to. Defaults to `{ type: "global" }`.
+
+#### keys
+
+Type: `{ [key]: key }` *(optional)*
+
+Customize additional fields to pull from log messages and include in meta. Currently
+supports `httpRequest`, `trace`. Defaults to `{ httpRequest: "httpRequest" }`.
