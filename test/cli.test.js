@@ -60,6 +60,17 @@ test('parses custom keys', (t) => {
   })
 })
 
+test('throws on invalid key', (t) => {
+  t.plan(1)
+  delete process.env.PROJECT_ID
+  const app = spawn('node', [appPath, '-p', 'project-id', '--key', 'httpRequest'])
+  app.stdout.on('data', (data) => {
+    const msg = data.toString()
+    const res = (msg.indexOf('Invalid key:customKey pair') >= 0)
+    t.ok(res)
+  })
+})
+
 test('picks up environment variables', (t) => {
   t.plan(1)
   process.env.GOOGLE_APPLICATION_CREDENTIALS = './credentials.json'
