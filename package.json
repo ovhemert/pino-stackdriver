@@ -35,12 +35,12 @@
     "test"
   ],
   "devDependencies": {
-    "@types/node": "^13.9.1",
+    "@types/node": "^13.13.2",
     "event-stream": "^4.0.1",
     "pino-multi-stream": "^4.3.0",
-    "sinon": "^9.0.1",
+    "sinon": "^9.0.2",
     "standard": "^14.3.3",
-    "tap": "^14.10.6"
+    "tap": "^14.10.7"
   },
   "dependencies": {
     "@google-cloud/logging": "^7.3.0",
