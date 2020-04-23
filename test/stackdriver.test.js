@@ -88,11 +88,42 @@ test('adds labels to log entry message', t => {
 })
 
 test('adds httpRequest to log entry message', t => {
-  t.plan(2)
+  t.plan(3)
 
-  const log = { level: 30, time: parseInt('1532081790730', 10), httpRequest: { url: 'http://localhost/' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const log = { level: 30, time: parseInt('1532081790730', 10), httpRequest: { url: 'http://localhost/' }, trace: 'my/trace/id', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const entry = tested.toLogEntry(log)
   t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.httpRequest.url === 'http://localhost/')
+
+  // by default, do not include trace
+  t.ok(entry.meta.trace === undefined)
+})
+
+test('adds httpRequest with custom key to log entry message', t => {
+  t.plan(2)
+
+  const log = { level: 30, time: parseInt('1532081790730', 10), req: { url: 'http://localhost/' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log, { keys: { httpRequest: 'req' } })
+  t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.httpRequest.url === 'http://localhost/')
+})
+
+test('does not add trace to log entry message by default', t => {
+  t.plan(2)
+
+  const log = { level: 30, time: parseInt('1532081790730', 10), trace: 'my/trace/id', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log)
+  t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.trace === undefined)
+})
+
+test('adds trace to log entry message with option', t => {
+  t.plan(3)
+
+  const log = { level: 30, time: parseInt('1532081790730', 10), trace: 'my/trace/id', httpRequest: { url: 'http://localhost/' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log, { keys: { trace: 'trace' } })
+  t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.trace === 'my/trace/id')
   t.ok(entry.meta.httpRequest.url === 'http://localhost/')
 })
 

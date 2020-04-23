@@ -5,18 +5,31 @@ const program = require('commander')
 const pkg = require('../package.json')
 const stackdriver = require('././index')
 
+function collect (value, previous) {
+  return previous.concat([value])
+}
+
 // main cli logic
 function main () {
   program
     .version(pkg.version)
     .option('-c, --credentials <credentials>', 'The file path of the JSON file that contains your service account key')
     .option('-p, --project <project>', 'Your Google Cloud Platform project ID')
-    .action(({ credentials, project }) => {
+    .option('-k, --key <key:customKey>', 'Customize additional data to include in log metadata', collect, [])
+    .action(({ credentials, project, key }) => {
       try {
         const _credentials = credentials || process.env.GOOGLE_APPLICATION_CREDENTIALS
         if (!process.env.PROJECT_ID && !project) { throw Error('Project is missing.') }
         const _project = project || process.env.PROJECT_ID
-        const writeStream = stackdriver.createWriteStream({ credentials: _credentials, projectId: _project })
+
+        const customKeys = {}
+        key.forEach(k => {
+          const pair = k.split(':')
+          if (pair.length !== 2) { throw Error(`Invalid key:customKey pair ${k}`) }
+          customKeys[pair[0]] = pair[1]
+        })
+
+        const writeStream = stackdriver.createWriteStream({ credentials: _credentials, projectId: _project, keys: customKeys })
         process.stdin.pipe(writeStream)
         console.info('logging')
       } catch (error) {
