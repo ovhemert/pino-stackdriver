@@ -16,7 +16,9 @@ function main () {
     .option('-c, --credentials <credentials>', 'The file path of the JSON file that contains your service account key')
     .option('-p, --project <project>', 'Your Google Cloud Platform project ID')
     .option('-k, --key <key:customKey>', 'Customize additional data to include in log metadata', collect, [])
-    .action(({ credentials, project, key }) => {
+    .option('-n, --logName <name>', 'The name of the log. Defaults to "pino_log".')
+    .option('-r, --resource <resource>', 'The resource to send logs to. Defaults to { "type": "global" }', JSON.parse, { type: 'global' })
+    .action(({ credentials, project, key, logName, resource }) => {
       try {
         const _credentials = credentials || process.env.GOOGLE_APPLICATION_CREDENTIALS
         if (!process.env.PROJECT_ID && !project) { throw Error('Project is missing.') }
@@ -29,7 +31,7 @@ function main () {
           customKeys[pair[0]] = pair[1]
         })
 
-        const writeStream = stackdriver.createWriteStream({ credentials: _credentials, projectId: _project, keys: customKeys })
+        const writeStream = stackdriver.createWriteStream({ credentials: _credentials, projectId: _project, keys: customKeys, logName, resource })
         process.stdin.pipe(writeStream)
         console.info('logging')
       } catch (error) {
