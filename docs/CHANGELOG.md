@@ -13,9 +13,20 @@ Changes are grouped by:
 `Fixed` for any bug fixes
 `Security` in case of vulnerabilities
 
-## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v2.0.0...HEAD)
+## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.0...HEAD)
 
 - ...
+
+## [2.1.0](https://github.com/ovhemert/pino-stackdriver/compare/v2.0.0...v2.1.0)
+
+### Added
+
+- CLI options to sync up with API by [@Boelensman1](https://github.com/Boelensman1)
+- Support for custom http request keys by [@bobheadxi](https://github.com/bobheadxi)
+
+### Security
+
+- Fixed "@google-cloud/logging" vulnerability by upgrading dependencies by [@ovhemert](https://github.com/ovhemert)
 
 ## [2.0.0](https://github.com/ovhemert/pino-stackdriver/compare/v1.3.0...v2.0.0)
 
