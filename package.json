@@ -1,6 +1,6 @@
 {
   "name": "pino-stackdriver",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A transport for pino that sends messages to Google Stackdriver Logging",
   "homepage": "https://github.com/ovhemert/pino-stackdriver",
   "main": "src/index.js",
