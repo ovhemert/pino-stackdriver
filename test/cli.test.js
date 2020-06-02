@@ -71,6 +71,18 @@ test('throws on invalid key', (t) => {
   })
 })
 
+test('parses resource', (t) => {
+  t.plan(1)
+  delete process.env.PROJECT_ID
+  const app = spawn('node', [appPath, '-p', 'project-id', '--key', 'httpRequest:req', '--resource', '{"type": "resourceTypeTest"}'])
+  app.stdout.on('data', (data) => {
+    const msg = data.toString()
+    const res = (msg.indexOf('logging') >= 0)
+    t.ok(res)
+    app.kill()
+  })
+})
+
 test('picks up environment variables', (t) => {
   t.plan(1)
   process.env.GOOGLE_APPLICATION_CREDENTIALS = './credentials.json'
