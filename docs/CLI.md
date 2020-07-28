@@ -3,7 +3,7 @@
 To use `pino-stackdriver` from the command line, you need to install it globally:
 
 ```bash
-$ npm install -g pino-stackdriver
+npm install -g pino-stackdriver
 ```
 
 ## Example
@@ -11,7 +11,7 @@ $ npm install -g pino-stackdriver
 Given an application `foo` that logs via pino, a stackdriver log project `bar` and credentials in the file `/credentials.json`, you would use `pino-stackdriver` like so:
 
 ```bash
-$ node foo | pino-stackdriver --project bar --credentials /credentials.json
+node foo | pino-stackdriver --project bar --credentials /credentials.json
 ```
 
 ## Usage
