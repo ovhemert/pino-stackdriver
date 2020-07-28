@@ -1,6 +1,6 @@
 # pino-stackdriver
 
-[![Travis](https://img.shields.io/travis/com/ovhemert/pino-stackdriver.svg?branch=master&logo=travis)](https://travis-ci.com/ovhemert/pino-stackdriver)
+[![CI](https://github.com/ovhemert/pino-stackdriver/workflows/CI/badge.svg)](https://github.com/ovhemert/pino-stackdriver/actions)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d259e1e01a09432398c75c2127aeeaab)](https://app.codacy.com/app/ovhemert/pino-stackdriver?utm_source=github.com&utm_medium=referral&utm_content=ovhemert/pino-stackdriver&utm_campaign=Badge_Grade_Dashboard)
 [![Known Vulnerabilities](https://snyk.io/test/npm/pino-stackdriver/badge.svg)](https://snyk.io/test/npm/pino-stackdriver)
 [![Coverage Status](https://coveralls.io/repos/github/ovhemert/pino-stackdriver/badge.svg?branch=master)](https://coveralls.io/github/ovhemert/pino-stackdriver?branch=master)

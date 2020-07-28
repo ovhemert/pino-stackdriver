@@ -1,0 +1,41 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Restore cached dependencies
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package.json') }}
+      - name: Install dependencies
+        run: npm install
+      - name: Run Tests
+        run: npm test
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        env:
+          COVERALLS_FLAG_NAME: run-${{ matrix.os }}-${{ matrix.node-version }}
+        with:
+          github-token: ${{ secrets.github_token }}
+          parallel: true
+  finish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
