@@ -12,7 +12,7 @@ const credentials = '/credentials.json'
 const projectId = 'my-project'
 const writeStream = stackdriver.createWriteStream({ credentials, projectId })
 // create pino loggger
-const logger = pinoms({ streams: [writeStream] })
+const logger = pinoms({ streams: [{ stream: writeStream }] })
 // log some events
 logger.info('Informational message')
 logger.error(new Error('things got bad'), 'error message')

@@ -13,7 +13,7 @@ This module provides a "transport" for [pino][pino] that forwards messages to th
 You should install `pino-stackdriver` globally for ease of use:
 
 ```bash
-$ npm install --production -g pino-stackdriver
+npm install --production -g pino-stackdriver
 ```
 
 ## Requirements
@@ -27,13 +27,13 @@ Create a service account on the page [Stackdriver Logging Client Libraries](http
 To use globally from command line:
 
 ```bash
-$ npm install -g pino-stackdriver
+npm install -g pino-stackdriver
 ```
 
 To include as a library in your project:
 
 ```bash
-$ npm install pino-stackdriver
+npm install pino-stackdriver
 ```
 
 ## CLI
