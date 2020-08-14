@@ -63,3 +63,9 @@ Type: `{ [key]: key }` *(optional)*
 
 Customize additional fields to pull from log messages and include in meta. Currently
 supports `httpRequest`, `trace`. Defaults to `{ httpRequest: "httpRequest" }`.
+
+#### fallback
+
+Type: Boolean *(optional)*
+
+Set the gRPC fallback option for the Google Stackdriver API.

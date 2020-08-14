@@ -190,6 +190,19 @@ test('works without passing credentials', t => {
   }
 })
 
+test('works with the fallback option', t => {
+  t.plan(1)
+
+  const { projectId, fallback } = helpers
+  try {
+    delete process.env.GOOGLE_APPLICATION_CREDENTIALS
+    tested.toStackdriverStream({ projectId, fallback })
+    t.ok(true)
+  } catch (err) {
+    t.fail('Should not have thrown')
+  }
+})
+
 test('throws on missing projectId', t => {
   t.plan(1)
 

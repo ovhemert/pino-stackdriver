@@ -8,6 +8,7 @@ const { Logging } = require('@google-cloud/logging')
 
 module.exports.credentials = '/credentials.json'
 module.exports.projectId = 'test-project'
+module.exports.fallback = true
 module.exports.package = pkg
 
 module.exports.stubLogging = () => {
