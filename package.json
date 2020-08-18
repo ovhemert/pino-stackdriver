@@ -48,7 +48,7 @@
     "commander": "^6.0.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^2.0.1",
-    "split2": "^3.1.1",
+    "split2": "^3.2.1",
     "through2": "^4.0.2"
   }
 }
