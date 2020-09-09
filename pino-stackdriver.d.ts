@@ -35,6 +35,11 @@ declare namespace PinoStackdriver {
       httpRequest?: string;
       trace?: string;
     };
+
+    /**
+     * Set the gRPC fallback option for the Google Stackdriver API.
+     */
+    fallback?: boolean;
   }
 
   /**
