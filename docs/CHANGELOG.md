@@ -13,9 +13,15 @@ Changes are grouped by:
 `Fixed` for any bug fixes
 `Security` in case of vulnerabilities
 
-## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.0...HEAD)
+## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.1...HEAD)
 
 - ...
+
+## [2.1.1](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.0...v2.1.1)
+
+### Added
+
+- Fallback option for Google Logging API by [@slhck](https://github.com/slhck)
 
 ## [2.1.0](https://github.com/ovhemert/pino-stackdriver/compare/v2.0.0...v2.1.0)
 
