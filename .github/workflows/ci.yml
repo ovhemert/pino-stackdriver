@@ -24,7 +24,7 @@ jobs:
       - name: Run Tests
         run: npm test
       - name: Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v1.1.2
         env:
           COVERALLS_FLAG_NAME: run-${{ matrix.os }}-${{ matrix.node-version }}
         with:
