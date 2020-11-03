@@ -44,8 +44,8 @@
     "tap": "^14.10.8"
   },
   "dependencies": {
+    "commander": "^6.2.0",
     "@google-cloud/logging": "^8.0.7",
-    "commander": "^6.1.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^2.0.1",
     "split2": "^3.2.2",
