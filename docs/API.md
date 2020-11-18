@@ -38,7 +38,7 @@ const writeStream = stackdriver.createWriteStream({
 Type: `String` or `{ client_email: String, private_key: String }` *(optional)*
 
 Full path to the JSON file containing the Google Service Credentials, 
-you can also use an object parameter with the client_id and the private_key instead of the path. Defaults to the GOOGLE_APPLICATION_CREDENTIALS environment variable. At least one has to be available.
+you can also use an object parameter with the client_email and the private_key instead of the path. Defaults to the GOOGLE_APPLICATION_CREDENTIALS environment variable. At least one has to be available.
 
 
 #### projectId

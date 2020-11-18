@@ -22,7 +22,9 @@ You can pass the following options via cli arguments:
 | ------------- | ------------ |-------------|
 | -V | --version | Output the version number |
 | -p | --project &lt;project&gt; | Your Google Cloud Platform project ID (or use env var PROJECT_ID) |
-| -c | --credentials &lt;credentials&gt; | The file path of the JSON file that contains your service account key (or use env var GOOGLE_APPLICATION_CREDENTIALS) |
+| -c | --credentials &lt;credentials&gt; | The file path of the JSON file that contains your service account key (or use env var GOOGLE_APPLICATION_CREDENTIALS). you can also use clientEmail and privateKey instead of the path. |
+| -e | --clientEmail &lt;email&gt; | Client email, part of credentials object provided by Google |
+| -g | --privateKey &lt;googleKey&gt; | Private key, part of credentials object provided by Google. |
 | -k | --key &lt;key:customKey&gt; | Repeatable `key:customKey` pairs for custom keys (see [API docs](./API.md#keys))
 | -n | --logName | The resource to send logs to. Defaults to `{"type": "global"}`.
 | -r | --resource &lt;resourcejson&gt; | Resource to send the logs to, input in JSON (see [API docs](./API.md#resource))
