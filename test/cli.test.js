@@ -108,3 +108,39 @@ test('pipes data to output', (t) => {
     app.kill()
   })
 })
+
+test('throws on Client email or google private key is missing', t => {
+  t.plan(1)
+  delete process.env.GOOGLE_APPLICATION_CREDENTIALS
+  const app = spawn('node', [appPath, '-e', 'email@example.com', '-p', 'project-id'])
+  app.stdout.on('data', (data) => {
+    const msg = data.toString()
+    const res = (msg.indexOf('Client email or google private key is missing.') >= 0)
+    t.ok(res)
+    app.kill()
+  })
+})
+
+test('throws on use client email and google private key or credentials', t => {
+  t.plan(1)
+  delete process.env.GOOGLE_APPLICATION_CREDENTIALS
+  const app = spawn('node', [appPath, '-c', './credentials.json', '-e', 'email@example.com', '-g', 'private-key', '-p', 'project-id'])
+  app.stdout.on('data', (data) => {
+    const msg = data.toString()
+    const res = (msg.indexOf('Use client email and google private key or credentials, no both!') >= 0)
+    t.ok(res)
+    app.kill()
+  })
+})
+
+test('works passing object credentials', t => {
+  t.plan(1)
+  delete process.env.GOOGLE_APPLICATION_CREDENTIALS
+  const app = spawn('node', [appPath, '-e', 'email@example.com', '-g', 'private-key', '-p', 'project-id'])
+  app.stdout.on('data', (data) => {
+    const msg = data.toString()
+    const res = (msg.indexOf('logging') >= 0)
+    t.ok(res)
+    app.kill()
+  })
+})
