@@ -233,3 +233,17 @@ test('transforms log entry message field', t => {
   const entry = tested.toLogEntry(log)
   t.ok(entry.data.message === 'Message')
 })
+
+test('logs to stackdriver with an object credentials', t => {
+  t.plan(1)
+  const credentials = { client_email: 'fakeEmail', private_key: 'fakeKey' }
+  const projectId = 'test-project'
+
+  const writeStream = tested.toStackdriverStream({ credentials, projectId })
+  writeStream.on('finish', () => {
+    t.ok(true)
+  })
+  const entry = { meta: { resource: { type: 'global' }, severity: 'info' }, data: { message: 'Info message' } }
+  const readStream = helpers.readStreamTest([entry])
+  readStream.pipe(writeStream)
+})

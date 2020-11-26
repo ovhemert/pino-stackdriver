@@ -5,7 +5,7 @@ declare namespace PinoStackdriver {
      * Full path to the JSON file containing the Google Service Credentials.
      * Defaults to GOOGLE_APPLICATION_CREDENTIALS environment variable.
      */
-    credentials?: string;
+    credentials?: string | {client_email: string, private_key:string};
 
     /**
      * The name of the project.

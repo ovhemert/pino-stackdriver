@@ -86,9 +86,6 @@ module.exports.toLogEntryStream = function (options = {}) {
 
 module.exports.toStackdriverStream = function (options = {}) {
   const { logName, projectId, credentials, fallback } = options
-  if (process.env.GOOGLE_APPLICATION_CREDENTIALS || credentials) {
-    process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || credentials
-  }
   if (!projectId) { throw Error('The "projectId" argument is missing') }
   const opt = {
     logName: logName || 'pino_log',
@@ -96,6 +93,15 @@ module.exports.toStackdriverStream = function (options = {}) {
     scopes: ['https://www.googleapis.com/auth/logging.write'],
     fallback
   }
+
+  if (typeof credentials === 'object' && credentials !== null) {
+    opt.credentials = credentials
+  } else {
+    if (process.env.GOOGLE_APPLICATION_CREDENTIALS || credentials) {
+      process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || credentials
+    }
+  }
+
   const log = new Logging(opt).log(opt.logName)
   const writableStream = new stream.Writable({
     objectMode: true,
