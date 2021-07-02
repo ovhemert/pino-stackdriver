@@ -37,7 +37,7 @@ const writeStream = stackdriver.createWriteStream({
 
 Type: `String` or `{ client_email: String, private_key: String }` *(optional)*
 
-Full path to the JSON file containing the Google Service Credentials, 
+Full path to the JSON file containing the Google Service Credentials,
 you can also use an object parameter with the client_email and the private_key instead of the path. Defaults to the GOOGLE_APPLICATION_CREDENTIALS environment variable. At least one has to be available.
 
 
@@ -71,3 +71,22 @@ supports `httpRequest`, `trace`. Defaults to `{ httpRequest: "httpRequest" }`.
 Type: Boolean *(optional)*
 
 Set the gRPC fallback option for the Google Stackdriver API.
+
+## Prefixing messages
+
+Prefixing message is supported via a `prefix` property from the log data:
+
+```js
+logger.info({ prefix: 'foo' }, 'Info message')
+logger.child({ prefix: 'foo' }).info('Info message')
+```
+
+Will send the following JSON payload to Stackdriver:
+
+```json
+{
+  "prefix": "foo",
+  "message": "[foo] Info message"
+  // ...
+}
+```

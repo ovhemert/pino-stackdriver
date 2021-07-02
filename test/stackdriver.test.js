@@ -64,8 +64,8 @@ test('transforms custom log entry level', t => {
 test('prefixes log entry message', t => {
   t.plan(1)
 
-  const log = { level: 30, time: parseInt('1532081790730', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
-  const entry = tested.toLogEntry(log, { prefix: 'INFO' })
+  const log = { level: 30, time: parseInt('1532081790730', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', prefix: 'INFO' }
+  const entry = tested.toLogEntry(log)
   t.ok(entry.data.message.startsWith('[INFO] '))
 })
 
