@@ -47,7 +47,8 @@ module.exports.parseJsonStream = function () {
 }
 
 module.exports.toLogEntry = function (log, options = {}) {
-  const { labels, prefix, resource, keys } = options
+  const { labels, resource, keys } = options
+  const { prefix } = log
 
   const severity = _levelToSeverity(log.level)
   let message = log.msg || log.message || severity
