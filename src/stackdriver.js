@@ -1,3 +1,4 @@
+const os = require('os')
 const stream = require('stream')
 
 const fastJsonParse = require('fast-json-parse')
@@ -7,10 +8,19 @@ const { Logging } = require('@google-cloud/logging')
 
 const PINO_LEVELS = { trace: 10, debug: 20, info: 30, warn: 40, error: 50, fatal: 60 }
 // const STACKDRIVER_SEVERITIES = { default: 0, debug: 100, info: 200, notice: 300, warning: 400, error: 500, critical: 600, alert: 700, emergency: 800 }
+const HOSTNAME = os.hostname()
 
 function _jsonParser (str) {
   const result = fastJsonParse(str)
-  if (result.err) return
+  if (result.err) {
+    return {
+      hostname: HOSTNAME,
+      level: PINO_LEVELS.debug,
+      msg: str,
+      pid: process.pid,
+      time: Date.now()
+    }
+  }
   return result.value
 }
 

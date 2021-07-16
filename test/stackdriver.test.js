@@ -19,13 +19,15 @@ test('parses pino message in stream', t => {
   writeStream.end()
 })
 
-test('does not parse invalid json in stream', t => {
-  t.plan(1)
+test('parses invalid json in stream', t => {
+  t.plan(3)
 
   const parseJsonStream = tested.parseJsonStream()
   const writeStream = helpers.transformStreamTest(parseJsonStream, (err, result) => {
     if (err) { t.fail(err.message) }
-    t.ok(result.length === 0)
+    t.ok(result.length === 1)
+    t.ok(result[0].level === 20)
+    t.ok(result[0].msg === 'invalid json')
   })
   const readStream = helpers.readStreamTest(['invalid json'])
   readStream.pipe(writeStream)
