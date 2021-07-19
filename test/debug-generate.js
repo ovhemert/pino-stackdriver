@@ -1,6 +1,6 @@
 const pinoms = require('pino-multi-stream')
 
-var logger = pinoms({
+const logger = pinoms({
   streams: [{ stream: process.stdout }]
 })
 logger.level = 'trace'
