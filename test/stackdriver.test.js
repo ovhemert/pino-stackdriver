@@ -136,7 +136,7 @@ test('transforms log to entry in stream', t => {
     if (err) { t.fail(err.message) }
     t.ok(result.length === 1)
     t.ok(result[0].meta.severity === 'info')
-    t.deepEquals(result[0].meta.resource, { type: 'global' })
+    t.same(result[0].meta.resource, { type: 'global' })
   })
   const entry = { level: 30, time: parseInt('1532081790743', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const input = `${JSON.stringify(entry)}\n`
@@ -154,7 +154,7 @@ test('transforms log to entry with custom resource in stream', t => {
     if (err) { t.fail(err.message) }
     t.ok(result.length === 1)
     t.ok(result[0].meta.severity === 'info')
-    t.deepEquals(result[0].meta.resource, { type: 'test', labels: { test: 'test' } })
+    t.same(result[0].meta.resource, { type: 'test', labels: { test: 'test' } })
   })
   const entry = { level: 30, time: parseInt('1532081790743', 10), msg: 'info message', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const input = `${JSON.stringify(entry)}\n`
