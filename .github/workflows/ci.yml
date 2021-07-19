@@ -27,7 +27,7 @@ jobs:
         uses: coverallsapp/github-action@v1.1.2
         with:
           flag-name: run-${{ matrix.os }}-${{ matrix.node-version }}
-          github-token: ${{ secrets.github_token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
   finish:
     needs: build
