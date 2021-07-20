@@ -13,9 +13,28 @@ Changes are grouped by:
 `Fixed` for any bug fixes
 `Security` in case of vulnerabilities
 
-## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.1...HEAD)
+## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v3.0.0...HEAD)
 
 - ...
+
+## [3.0.0](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.1...v3.0.0)
+
+### Added
+
+- Support passing credentials object parameter by [@jhonny111s](https://github.com/jhonny111s)
+- Testing on Node v16.x by [@ovhemert](https://github.com/ovhemert)
+
+### Changed
+
+- Better support for batching log entries passed in at higher volume by [@ovhemert](https://github.com/ovhemert)
+
+### Fixed
+
+- Fix implementation of prefixing log messages by [@avaly](https://github.com/avaly)
+
+### Removed
+
+- Node v10.x support by [@ovhemert](https://github.com/ovhemert)
 
 ## [2.1.1](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.0...v2.1.1)
 
