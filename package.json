@@ -29,7 +29,7 @@
     "url": "https://github.com/ovhemert/pino-stackdriver.git"
   },
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=12"
   },
   "precommit": [
     "lint",
