@@ -42,6 +42,8 @@ function _getKey (log, data, k, keys) {
   return undefined
 }
 
+function _noop () {}
+
 module.exports.parseJsonStream = function () {
   return split2(_jsonParser)
 }
@@ -108,7 +110,8 @@ module.exports.toStackdriverStream = function (options = {}) {
     objectMode: true,
     write (chunk, encoding, callback) {
       const entry = log.entry(chunk.meta, chunk.data)
-      log[chunk.meta.severity](entry, callback)
+      log[chunk.meta.severity](entry, _noop)
+      callback()
     }
   })
   return writableStream
