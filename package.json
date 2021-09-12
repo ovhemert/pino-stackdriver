@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@google-cloud/logging": "^9.5.4",
-    "commander": "^8.1.0",
+    "commander": "^8.2.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^2.0.1",
     "split2": "^3.2.2",
