@@ -29,7 +29,7 @@
     "url": "https://github.com/ovhemert/pino-stackdriver.git"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "precommit": [
     "lint",
@@ -44,7 +44,7 @@
     "tap": "^15.0.9"
   },
   "dependencies": {
-    "@google-cloud/logging": "^10.1.1",
+    "@google-cloud/logging": "^11.0.0",
     "commander": "^9.4.0",
     "fast-json-parse": "^1.0.3",
     "pumpify": "^2.0.1",
