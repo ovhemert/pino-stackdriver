@@ -17,6 +17,10 @@ Changes are grouped by:
 
 - ...
 
+### Removed
+
+- Node v12.x support by [@the-ress](https://github.com/the-ress)
+
 ## [3.0.0](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.1...v3.0.0)
 
 ### Added
