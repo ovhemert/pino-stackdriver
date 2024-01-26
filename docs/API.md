@@ -63,7 +63,7 @@ The resource to send logs to. Defaults to `{ type: "global" }`.
 Type: `{ [key]: key }` *(optional)*
 
 Customize additional fields to pull from log messages and include in meta. Currently
-supports `httpRequest`, `trace`. Defaults to `{ httpRequest: "httpRequest" }`.
+supports `httpRequest`, `trace`, `spanId`. Defaults to `{ httpRequest: "httpRequest" }`.
 
 #### fallback
 
