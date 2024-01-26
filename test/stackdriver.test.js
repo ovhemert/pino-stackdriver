@@ -88,15 +88,16 @@ test('adds labels to log entry message', t => {
 })
 
 test('adds httpRequest to log entry message', t => {
-  t.plan(3)
+  t.plan(4)
 
-  const log = { level: 30, time: parseInt('1532081790730', 10), httpRequest: { url: 'http://localhost/' }, trace: 'my/trace/id', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const log = { level: 30, time: parseInt('1532081790730', 10), httpRequest: { url: 'http://localhost/' }, trace: 'my/trace/id', spanId: 'my-span-id', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
   const entry = tested.toLogEntry(log)
   t.ok(entry.meta.severity === 'info')
   t.ok(entry.meta.httpRequest.url === 'http://localhost/')
 
-  // by default, do not include trace
+  // by default, do not include trace or spanId
   t.ok(entry.meta.trace === undefined)
+  t.ok(entry.meta.spanId === undefined)
 })
 
 test('adds httpRequest with custom key to log entry message', t => {
@@ -117,6 +118,15 @@ test('does not add trace to log entry message by default', t => {
   t.ok(entry.meta.trace === undefined)
 })
 
+test('does not add spanId to log entry message by default', t => {
+  t.plan(2)
+
+  const log = { level: 30, time: parseInt('1532081790730', 10), spanId: 'my-span-id', pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log)
+  t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.spanId === undefined)
+})
+
 test('adds trace to log entry message with option', t => {
   t.plan(3)
 
@@ -124,6 +134,16 @@ test('adds trace to log entry message with option', t => {
   const entry = tested.toLogEntry(log, { keys: { trace: 'trace' } })
   t.ok(entry.meta.severity === 'info')
   t.ok(entry.meta.trace === 'my/trace/id')
+  t.ok(entry.meta.httpRequest.url === 'http://localhost/')
+})
+
+test('adds spanId to log entry message with option', t => {
+  t.plan(3)
+
+  const log = { level: 30, time: parseInt('1532081790730', 10), spanId: 'my-span-id', httpRequest: { url: 'http://localhost/' }, pid: 9118, hostname: 'Osmonds-MacBook-Pro.local', v: 1 }
+  const entry = tested.toLogEntry(log, { keys: { spanId: 'spanId' } })
+  t.ok(entry.meta.severity === 'info')
+  t.ok(entry.meta.spanId === 'my-span-id')
   t.ok(entry.meta.httpRequest.url === 'http://localhost/')
 })
 

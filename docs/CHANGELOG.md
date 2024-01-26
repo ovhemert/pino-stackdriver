@@ -15,7 +15,9 @@ Changes are grouped by:
 
 ## [Unreleased](https://github.com/ovhemert/pino-stackdriver/compare/v3.0.0...HEAD)
 
-- ...
+### Added
+
+- Support `spanId` field in meta [@the-ress](https://github.com/the-ress)
 
 ## [3.0.0](https://github.com/ovhemert/pino-stackdriver/compare/v2.1.1...v3.0.0)
 
