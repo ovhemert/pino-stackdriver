@@ -25,7 +25,8 @@ function _levelToSeverity (level) {
 
 const defaultKeys = {
   httpRequest: 'httpRequest',
-  trace: undefined
+  trace: undefined,
+  spanId: undefined
 }
 
 function _getKey (log, data, k, keys) {
@@ -66,6 +67,7 @@ module.exports.toLogEntry = function (log, options = {}) {
       resource: resource || { type: 'global' },
       severity,
       trace: _getKey(log, data, 'trace', keys),
+      spanId: _getKey(log, data, 'spanId', keys),
       httpRequest: _getKey(log, data, 'httpRequest', keys)
     },
     data

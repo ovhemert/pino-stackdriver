@@ -29,11 +29,12 @@ declare namespace PinoStackdriver {
 
     /**
      * Names of log fields to pull properties out of - see https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
-     * @default { httpRequest: "httpRequest", trace: "trace", ... }
+     * @default { httpRequest: "httpRequest" }
      */
     keys?: {
       httpRequest?: string;
       trace?: string;
+      spanId?: string;
     };
 
     /**
