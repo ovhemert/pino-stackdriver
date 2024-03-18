@@ -1,5 +1,6 @@
 const pinoms = require('pino-multi-stream')
 const test = require('tap').test
+const path = require('path')
 
 const helpers = require('./helpers')
 const tested = require('../src/stackdriver')
@@ -257,6 +258,21 @@ test('transforms log entry message field', t => {
 test('logs to stackdriver with an object credentials', t => {
   t.plan(1)
   const credentials = { client_email: 'fakeEmail', private_key: 'fakeKey' }
+  const projectId = 'test-project'
+
+  const writeStream = tested.toStackdriverStream({ credentials, projectId })
+  writeStream.on('finish', () => {
+    t.ok(true)
+  })
+  const entry = { meta: { resource: { type: 'global' }, severity: 'info' }, data: { message: 'Info message' } }
+  const readStream = helpers.readStreamTest([entry])
+  readStream.pipe(writeStream)
+})
+
+test('logs to stackdriver with a filepath credentials', t => {
+  t.plan(1)
+
+  const credentials = path.join(__dirname, 'credentials.json')
   const projectId = 'test-project'
 
   const writeStream = tested.toStackdriverStream({ credentials, projectId })
